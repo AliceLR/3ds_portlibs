@@ -1,4 +1,7 @@
 #!/bin/sh
+
+mkdir -p "$PKGBASE/files"
+
 TARGET="$PKGBASE/files/$1"
 if [ ! -f "$TARGET" ]; then
 	wget -O "$TARGET" "$3"
