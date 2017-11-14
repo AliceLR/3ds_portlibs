@@ -7,6 +7,6 @@ FILENAME=$NAME-$VERSION.$EXTENSION
 
 pkg-download $FILENAME $SHA256 http://downloads.xiph.org/releases/vorbis/$FILENAME
 cd $NAME-$VERSION
-./configure --prefix="$PREFIX" --host=arm-none-eabi --disable-shared --enable-static
+./configure --prefix="$PREFIX" --host=$PKGARCH --disable-shared --enable-static
 make
 make -j1 install

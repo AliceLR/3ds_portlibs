@@ -5,6 +5,6 @@ FILENAME=zlib-$VERSION.tar.gz
 
 pkg-download $FILENAME $SHA256 http://zlib.net/$FILENAME
 cd zlib-$VERSION
-CHOST=arm-none-eabi ./configure --static --prefix="$PREFIX"
+CHOST=$PKGARCH ./configure --static --prefix="$PREFIX"
 make
 make -j1 install

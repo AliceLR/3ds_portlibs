@@ -11,7 +11,7 @@ sed -i -e "s/int libspectrum_split_to_48k_pages/libspectrum_error libspectrum_sp
   internals.h
 perl -0777 -i.original -pe "s/int\nlibspectrum_zip_next/libspectrum_error\nlibspectrum_zip_next/" \
   zip.c
-./configure --prefix="$PREFIX" --host=arm-none-eabi --disable-shared --enable-static \
+./configure --prefix="$PREFIX" --host=$PKGARCH --disable-shared --enable-static \
   --with-fake-glib
 make
 make -j1 install

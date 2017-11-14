@@ -1,12 +1,12 @@
 #!/bin/sh
 NAME=libogg
-VERSION=1.3.2
+VERSION=1.3.3
 EXTENSION=tar.xz
-SHA256=3f687ccdd5ac8b52d76328fbbfebc70c459a40ea891dbf3dccb74a210826e79b
+SHA256=4f3fc6178a533d392064f14776b23c397ed4b9f48f5de297aba73b643f955c08
 FILENAME=$NAME-$VERSION.$EXTENSION
 
 pkg-download $FILENAME $SHA256 http://downloads.xiph.org/releases/ogg/$FILENAME
 cd $NAME-$VERSION
-./configure --prefix="$PREFIX" --host=arm-none-eabi --disable-shared --enable-static
+./configure --prefix="$PREFIX" --host=$PKGARCH --disable-shared --enable-static
 make
 make -j1 install

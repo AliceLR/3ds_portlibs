@@ -10,7 +10,7 @@ cd $NAME-$VERSION
 
 patch -p1 < "$KEEPDIR"/freetype-2.7-smaller.patch
 
-./configure --prefix="$PREFIX" --host=arm-none-eabi --disable-shared --enable-static \
+./configure --prefix="$PREFIX" --host=$PKGARCH --disable-shared --enable-static \
   --with-zlib=yes --with-bzip2=no --with-png=no
 make
 make -j1 install

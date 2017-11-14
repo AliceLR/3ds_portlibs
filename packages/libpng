@@ -1,12 +1,18 @@
 #!/bin/sh
 NAME=libpng
-VERSION=1.6.29
+VERSION=1.6.34
 EXTENSION=tar.xz
-SHA256=4245b684e8fe829ebb76186327bb37ce5a639938b219882b53d64bd3cfc5f239
+SHA256=2f1e960d92ce3b3abd03d06dfec9637dfbd22febf107a536b44f7a47c60659f6
 FILENAME=$NAME-$VERSION.$EXTENSION
 
 pkg-download $FILENAME $SHA256 http://download.sourceforge.net/libpng/$FILENAME
 cd $NAME-$VERSION
-./configure --prefix="$PREFIX" --host=arm-none-eabi --disable-shared --enable-static
+./configure --prefix="$PREFIX" --host=$PKGARCH --disable-shared --enable-static
+
+# Workaround for a missing fenv.h, this is used in tests/by tools only anyway
+case "$PKGARCH" in
+	powerpc*) sed -i "s/#define HAVE_FEENABLEEXCEPT 1//" config.h ;;
+esac
+
 make
 make -j1 install

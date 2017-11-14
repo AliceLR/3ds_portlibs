@@ -1,12 +1,12 @@
 #!/bin/sh
 NAME=libjpeg-turbo
-VERSION=1.5.1
+VERSION=1.5.2
 EXTENSION=tar.gz
-SHA256=41429d3d253017433f66e3d472b8c7d998491d2f41caa7306b8d9a6f2a2c666c
+SHA256=9098943b270388727ae61de82adec73cf9f0dbb240b3bc8b172595ebf405b528
 FILENAME=$NAME-$VERSION.$EXTENSION
 
-pkg-download $FILENAME $SHA256 http://sourceforge.net/projects/$NAME/files/$VERSION/$FILENAME/download
+pkg-download $FILENAME $SHA256 https://sourceforge.net/projects/$NAME/files/$VERSION/$FILENAME/download
 cd $NAME-$VERSION
-./configure --prefix="$PREFIX" --host=arm-none-eabi --disable-shared --enable-static
+./configure --prefix="$PREFIX" --host=$PKGARCH --disable-shared --enable-static
 make CFLAGS+="\"-Drandom()=rand()\""
 make -j1 install

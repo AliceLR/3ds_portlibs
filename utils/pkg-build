@@ -18,6 +18,7 @@ export CC=arm-none-eabi-gcc
 export NM=arm-none-eabi-nm
 
 PKGBASE=`realpath "$UTILDIR/.."` PREFIX=`realpath $DEVKITPRO/portlibs/armv6k/` \
+  PKGARCH=arm-none-eabi \
   KEEPDIR=`realpath "$UTILDIR/../KEEP"` \
   ROOTDIR=`realpath $DEVKITPRO/portlibs/armv6k/` "$UTILDIR/../packages/$1"
 
